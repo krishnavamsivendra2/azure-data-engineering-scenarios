@@ -87,18 +87,18 @@ Create the following pipeline-level variables to support metadata-based date ext
 ---
 
 ### Step 5: Fetch Metadata for Each File
-(Inside ForEach)
+	#### (Inside ForEach)
 
 - Use **Get Metadata** activity
-- Dataset is parameterized using:
-	`item().name`
+- Dataset is parameterized using: `item().name`
 - Retrieve:
-	`LastModified`
-	`ItemName`
+	- `LastModified`
+	- `ItemName`
 
 ---
 
-### Step 6: Extract Date from Metadata (Inside ForEach)
+### Step 6: Extract Date from Metadata 
+	#### (Inside ForEach)
 
 - Use **Set Variable** activities to extract:
   - `year`
@@ -115,7 +115,8 @@ ADF expressions used:
 ```
 ---
 
-### Step 7: Construct Destination Folder Path (Inside ForEach)
+### Step 7: Construct Destination Folder Path
+	#### (Inside ForEach)
 
 - Build folder path dynamically using extracted date variables
 
@@ -128,7 +129,8 @@ ADF expression used:
 
 ---
 
-### Step 8: Copy File to ADLS Gen2 (Inside ForEach)
+### Step 8: Copy File to ADLS Gen2
+	#### (Inside ForEach)
 - Use **Copy Data** activity
 - Source:
   - Azure Blob Storage (current file)
@@ -142,7 +144,8 @@ ADF expression used:
 
 ---
 
-### Step 9: Delete Source File (Inside ForEach)
+### Step 9: Delete Source File
+	#### (Inside ForEach)
 - Use **Delete** activity
 - Deletes the processed file from source Blob container
 - Completes **move semantics**
